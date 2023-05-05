@@ -16,4 +16,10 @@ response_top_example = HTTP.get("https://api.wordnik.com/v4/word.json/#{word}/ex
 
 top_example = response_top_example.parse(:json)
 
-puts top_example[0]
+puts top_example["examples"][0]["text"]
+
+response_pronounce = HTTP.get("https://api.wordnik.com/v4/word.json/#{word}/pronunciations?useCanonical=false&limit=50&api_key=APIKEY")
+
+pronounciation = response_pronounce.parse(:json)
+
+puts pronounciation[0]["raw"]
